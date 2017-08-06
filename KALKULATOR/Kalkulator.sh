@@ -162,7 +162,8 @@ echo "╚██████╔╝██████╔╝███████�
 echo " ╚═════╝ ╚═════╝ ╚══════╝╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝    ╚═════╝ ╚══════╝╚══════╝╚═╝      ╚═╝"
 }   
                                                                                                                                                                                                                                                                                                                                           
-sleep 1                                                             
+sleep 1 
+                                                            
 #sprawdzenie czy dialog jest zainstalowany
 which dialog > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -175,6 +176,7 @@ xterm -T "☣ INSTALACJA DIALOG ☣" -geometry 102x34 -e "sudo apt-get install d
 fi
 
 sleep 1 
+
 #sprawdzenie czy dialog jest zainstalowany
 which zenity > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -302,10 +304,14 @@ do
          echo -e '\e[0;34m' "Podaj liczbe do spotegowania"
 	 read liczba
 	 L=$((liczba * liczba))
-	 echo "WYNIK POTEGOWANIA TO L=$L"
-	 sleep 4
-	 clear
-	 banner
+	 if [ "$liczba" -eq 0 ]; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	 else 
+	 	echo "WYNIK POTEGOWANIA TO L=$L"
+	 	sleep 4
+	 	clear
+	 	banner
+	 fi
 	 ;;
     1) banner3
   	 echo -e '\e[1;33m' "Podaj pierwsza liczbe a"
@@ -313,10 +319,14 @@ do
 	 echo -e '\e[1;33m' "Podaj druga liczba b"
 	 read b
 	 L=$((a + b))
-	 echo "WYNIK DODAWANIA TO L=$L"
-	 sleep 4
-	 clear
-	 banner
+	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	 else
+	 	echo "WYNIK DODAWANIA TO L=$L"
+	 	sleep 4
+	 	clear
+	 	banner
+	 fi
 	 ;;
     2) banner4
          echo -e '\e[1;34m' "Podaj pierwsza liczbe a" 
@@ -324,10 +334,14 @@ do
 	 echo -e '\e[1;34m' "Podaj druga liczba b"
 	 read b
 	 L=$((a - b))
-	 echo "WYNIK ODEJMOWANIA TO L=$L"
-	 sleep 4
-	 clear
-	 banner
+	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	 else
+	 	echo "WYNIK ODEJMOWANIA TO L=$L"
+	 	sleep 4
+	 	clear
+	 	banner
+	 fi
 	 ;;
     3) banner5
 	 echo -e '\e[1;35m' "Podaj pierwsza liczbe a" 
@@ -335,10 +349,14 @@ do
 	 echo -e '\e[1;35m' "Podaj druga liczba b"
 	 read b
 	 L=$((a * b))
-	 echo "WYNIK MNOZENIA TO L=$L"
-	 sleep 4
-	 clear
-	 banner
+	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	 else
+	 	echo "WYNIK MNOZENIA TO L=$L"
+	 	sleep 4
+	 	clear
+	 	banner
+	 fi
 	 ;;
     4) banner6
         echo -e '\e[1;36m' "Podaj pierwsza liczbe a" 
@@ -346,10 +364,14 @@ do
         echo -e '\e[1;36m' "Podaj druga liczba b"
         read b
         L=$((a / b))
-        echo "WYNIK DZIELENIA TO L=$L"
-	sleep 4
- 	clear
-	banner
+	if [ $a -eq 0 && $b -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+        	echo "WYNIK DZIELENIA TO L=$L"
+		sleep 4
+ 		clear
+		banner
+	fi
 	;;
     5) banner7
         echo -e '\e[1;31m' "Podaj pierwszy bok a" 
@@ -357,10 +379,14 @@ do
         echo -e '\e[1;31m' "Podaj drugi bok b"
         read b
         L=$((a * b / 2))
-        echo "POLE TROJKATA PROSTOKOTNEGO TO L=$L"
-	sleep 4
-	clear
-	banner
+	if [ $a -eq 0 && $b -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+        	echo "POLE TROJKATA PROSTOKOTNEGO TO L=$L"
+		sleep 4
+		clear
+		banner
+	fi
 	;;
     6) banner8
         echo -e '\e[1;30m' "Podaj TWORZACA" 
@@ -375,13 +401,17 @@ do
 	Pb=$(($Pi * r * l))
 	Pc=$(($Pi * r * r + l))
         V=$(($Pi * r * r * h / 3))
-	echo "POLE PODSTAWY STOZKA TO Pp=$Pp"
-	echo "POLE BOCZNE STOZKA TO Pb=$Pb"
-	echo "POLE CALKOWITE STOZKA TO Pc=$Pc"
-	echo "OBJETOSC STOZKA TO V=$V"
-	sleep 4
-	clear
-	banner
+	if [ $l -eq 0 && $r -eq 0 && $h -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+		echo "POLE PODSTAWY STOZKA TO Pp=$Pp"
+		echo "POLE BOCZNE STOZKA TO Pb=$Pb"
+		echo "POLE CALKOWITE STOZKA TO Pc=$Pc"
+		echo "OBJETOSC STOZKA TO V=$V"
+		sleep 4
+		clear
+		banner
+	fi
 	;;
     7) banner9
 	echo -e '\e[3m' "PODAJ DLUGOSC KROTSZEGO BOKU A"
@@ -392,10 +422,14 @@ do
 	read H
 	echo $A $B $H 
 	P=$((A + B * H / 2))
-	echo "POLE TRAPEZU WYNOSI P=$P"
-	sleep 4
-	clear
-	banner
+	if [ $A -eq 0 && $B -eq 0 && $H -eq 0] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+		echo "POLE TRAPEZU WYNOSI P=$P"
+		sleep 4
+		clear
+		banner
+	fi
 	;;
     8) banner10
         echo -e '\e[1;30m' "Podaj TWORZACA" 
@@ -410,24 +444,33 @@ do
 	Pb=$(($Pi * $Pi * r * h))
 	Pc=$(($Pi * $Pi * r * r + h))
         V=$(($Pi * r * r * h))
-	echo "POLE PODSTAWY WALCA TO Pp=$Pp"
-	echo "POLE BOCZNE WALCA TO Pb=$Pb"
-	echo "POLE CALKOWITE WALCA TO Pc=$Pc"
-	echo "OBJETOSC WALCA TO V=$V"
-	sleep 4
-	clear
-	banner;;
+	if [ $l -eq 0 && $r -eq 0 && $h -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+		echo "POLE PODSTAWY WALCA TO Pp=$Pp"
+		echo "POLE BOCZNE WALCA TO Pb=$Pb"
+		echo "POLE CALKOWITE WALCA TO Pc=$Pc"
+		echo "OBJETOSC WALCA TO V=$V"
+		sleep 4
+		clear
+		banner
+	fi
+	;;
     9) banner11
 	echo -e '\e[0;34m' "Podaj PROMIEN"
         read r
 	Pc=$((4 * r * r))
 	V=$((4 / 3 * r * r * r))
-	echo $r
-	echo "POLE CALKOWITE KULI WYNOSI Pc=$Pc cm"
-	echo "OBJETOSC KULI WYNOSI V=$V cm"
-	sleep 4 
-	clear 
-	banner
+	if [ $r -eq 0 ] ; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else	
+		echo $r
+		echo "POLE CALKOWITE KULI WYNOSI Pc=$Pc cm"
+		echo "OBJETOSC KULI WYNOSI V=$V cm"
+		sleep 4 
+		clear 
+		banner
+	fi
 	;; 
     10)banner12
 	echo -e '\e[0;35m' "Podaj liczbe a"
@@ -437,12 +480,16 @@ do
 	echo -e '\e[0;35m' "Podaj liczbe c"
 	read c
 	echo "Wzor na delte to (b * b - 4 * a * c)"
-	echo a = $a b = $b c = $c
-	Delta=$((4 * a * c - b * b))	
-	echo "Delta wynosi $Delta"
-	sleep 4
-	clear
-	banner
+	if [ $a -eq 0 && $b -eq 0 && $c -eq 0 ]; then 
+		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
+	else
+		echo a = $a b = $b c = $c
+		Delta=$((4 * a * c - b * b))	
+		echo "Delta wynosi $Delta"
+		sleep 4
+		clear
+		banner
+	fi
 	;;
    11) sudo python Pole.py
         sleep 4 
