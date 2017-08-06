@@ -319,7 +319,7 @@ do
 	 echo -e '\e[1;33m' "Podaj druga liczba b"
 	 read b
 	 L=$((a + b))
-	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+	 if [[ "$a" -eq 0 && "$b" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	 else
 	 	echo "WYNIK DODAWANIA TO L=$L"
@@ -334,7 +334,7 @@ do
 	 echo -e '\e[1;34m' "Podaj druga liczba b"
 	 read b
 	 L=$((a - b))
-	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+	 if [[ "$a" -eq 0 && "$b" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	 else
 	 	echo "WYNIK ODEJMOWANIA TO L=$L"
@@ -349,7 +349,7 @@ do
 	 echo -e '\e[1;35m' "Podaj druga liczba b"
 	 read b
 	 L=$((a * b))
-	 if [ $a -eq 0 && $b -eq 0 ] ; then 
+	 if [[ "$a" -eq 0 && "$b" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	 else
 	 	echo "WYNIK MNOZENIA TO L=$L"
@@ -364,7 +364,7 @@ do
         echo -e '\e[1;36m' "Podaj druga liczba b"
         read b
         L=$((a / b))
-	if [ $a -eq 0 && $b -eq 0 ] ; then 
+	if [[ "$a" -eq 0 && "$b" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
         	echo "WYNIK DZIELENIA TO L=$L"
@@ -379,7 +379,7 @@ do
         echo -e '\e[1;31m' "Podaj drugi bok b"
         read b
         L=$((a * b / 2))
-	if [ $a -eq 0 && $b -eq 0 ] ; then 
+	if [[ "$a" -eq 0 && "$b" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
         	echo "POLE TROJKATA PROSTOKOTNEGO TO L=$L"
@@ -401,7 +401,7 @@ do
 	Pb=$(($Pi * r * l))
 	Pc=$(($Pi * r * r + l))
         V=$(($Pi * r * r * h / 3))
-	if [ $l -eq 0 && $r -eq 0 && $h -eq 0 ] ; then 
+	if [[ "$l" -eq 0 && "$r" -eq 0 && "$h" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
 		echo "POLE PODSTAWY STOZKA TO Pp=$Pp"
@@ -422,7 +422,7 @@ do
 	read H
 	echo $A $B $H 
 	P=$((A + B * H / 2))
-	if [ $A -eq 0 && $B -eq 0 && $H -eq 0] ; then 
+	if [[ "$A" -eq 0 && "$B" -eq 0 && "$H" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
 		echo "POLE TRAPEZU WYNOSI P=$P"
@@ -444,7 +444,7 @@ do
 	Pb=$(($Pi * $Pi * r * h))
 	Pc=$(($Pi * $Pi * r * r + h))
         V=$(($Pi * r * r * h))
-	if [ $l -eq 0 && $r -eq 0 && $h -eq 0 ] ; then 
+	if [[ "$l" -eq 0 && "$r" -eq 0 && "$h" -eq 0 ]] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
 		echo "POLE PODSTAWY WALCA TO Pp=$Pp"
@@ -461,7 +461,7 @@ do
         read r
 	Pc=$((4 * r * r))
 	V=$((4 / 3 * r * r * r))
-	if [ $r -eq 0 ] ; then 
+	if [ "$r" -eq 0 ] ; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else	
 		echo $r
@@ -480,11 +480,11 @@ do
 	echo -e '\e[0;35m' "Podaj liczbe c"
 	read c
 	echo "Wzor na delte to (b * b - 4 * a * c)"
-	if [ $a -eq 0 && $b -eq 0 && $c -eq 0 ]; then 
+	if [[ "$a" -eq 0 && "$b" -eq 0 && "$c" -eq 0 ]]; then 
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
 		echo a = $a b = $b c = $c
-		Delta=$((4 * a * c - b * b))	#taki tu jest wzor poniewaz wyniki po dokonaniu obliczen wychodzily na minusie
+		Delta=$((4 * a * c - b * b))	
 		echo "Delta wynosi $Delta"
 		sleep 4
 		clear
