@@ -484,7 +484,7 @@ do
 		echo "Musisz podac liczbe bo zostawiles puste pole lub wpisales zero"
 	else
 		echo a = $a b = $b c = $c
-		Delta=$((4 * a * c - b * b))	
+		Delta=$((4 * a * c - b * b))	#taki tu jest wzor poniewaz wyniki po dokonaniu obliczen wychodzily na minusie
 		echo "Delta wynosi $Delta"
 		sleep 4
 		clear
