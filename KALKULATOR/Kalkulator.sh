@@ -432,13 +432,11 @@ do
 	fi
 	;;
     8) banner10
-        echo -e '\e[1;30m' "Podaj TWORZACA" 
-        read l
         echo -e '\e[1;30m' "Podaj PROMIEN"
         read r
         echo "Podaj wysokosc"
         read h
-	echo $l $r $h
+	echo $r $h
         Pi=3,14
 	Pp=$(($Pi * r * r))
 	Pb=$(($Pi * $Pi * r * h))
