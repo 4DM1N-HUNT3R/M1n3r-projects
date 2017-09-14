@@ -2,9 +2,16 @@
 
 import math
 import time
+import sys
+
 time.sleep(0.4)
-number = input("Podaj dlugosc boku a\n")
-liczba_number = number * number  
+number = raw_input("Podaj dlugosc boku a: \n")
+float_number = float(number)
+if len(number) != 0: 
+	print '\033[93m' "Wpisales zero lub nic nie wpisales"
+	sys.exit()
+  
+liczba_number = number * number 
 number2 = math.sqrt(9)  
 number3 = 4
 time.sleep(0.4)
