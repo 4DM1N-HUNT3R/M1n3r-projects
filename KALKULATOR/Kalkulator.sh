@@ -472,7 +472,7 @@ do
 		banner
 	fi
 	;; 
-    10)banner12
+    10) banner12
 	echo -e '\e[0;35m' "Podaj liczbe a"
 	read a
 	echo -e '\e[0;35m' "Podaj liczbe b"
