@@ -6,11 +6,7 @@ import sys
 
 time.sleep(0.4)
 number = raw_input("Podaj dlugosc boku a: \n")
-float_number = float(number)
-if len(number) != 0: 
-	print '\033[93m' "Wpisales zero lub nic nie wpisales"
-	sys.exit()
-  
+float_number = float(number)  
 liczba_number = number * number 
 number2 = math.sqrt(9)  
 number3 = 4
