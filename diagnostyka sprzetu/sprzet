@@ -1,0 +1,162 @@
+#!/bin/bash 
+
+resize -s 36 131 > /dev/null
+clear
+banner()
+{
+  echo -e '\e[0;31m'  "██╗███╗   ██╗███████╗ ██████╗      ██████╗     ███████╗██████╗ ██████╗ ███████╗███████╗ ██████╗██╗███████╗"
+  echo -e '\e[0;31m'  "██║████╗  ██║██╔════╝██╔═══██╗    ██╔═══██╗    ██╔════╝██╔══██╗██╔══██╗╚══███╔╝██╔════╝██╔════╝██║██╔════╝"
+  echo -e '\e[0;31m'  "██║██╔██╗ ██║█████╗  ██║   ██║    ██║   ██║    ███████╗██████╔╝██████╔╝  ███╔╝ █████╗  ██║     ██║█████╗"  
+  echo -e '\e[0;31m'  "██║██║╚██╗██║██╔══╝  ██║   ██║    ██║   ██║    ╚════██║██╔═══╝ ██╔══██╗ ███╔╝  ██╔══╝  ██║     ██║██╔══╝"
+  echo -e '\e[0;31m'  "██║██║ ╚████║██║     ╚██████╔╝    ╚██████╔╝    ███████║██║     ██║  ██║███████╗███████╗╚██████╗██║███████╗"
+  echo -e '\e[0;31m'  "╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝      ╚═════╝     ╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝╚═╝╚══════╝"
+}
+banner 
+
+#sprawdzenie czy dmidecode jest zainstalowany
+which dmidecode > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+	echo -e '\e[0;36m' "[ ✔ ] dmidecode........................[ zainstalowany]"
+	else
+		echo ""
+		echo -e '\e[0;31m' "[ X ] dmidecode-> nie zainstalowany]"
+		echo -e '\e[0;31m' "[ ! ] Ten skrypt wymaga dmidecode]"
+		xterm -T "☣ INSTALACJA dmidecode ☣" -geometry 102x34 -e "sudo apt-get install dmidecode -y"
+fi
+
+#sprawdzenie czy dialog jest zainstalowany
+which lscpu > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+	echo -e '\e[0;36m' "[ ✔ ] lscpu........................[ zainstalowany]"
+	else
+		echo ""
+		echo -e '\e[0;31m' "[ X ] lscpu-> nie zainstalowany]"
+		echo -e '\e[0;31m' "[ ! ] Ten skrypt wymaga lscpu]"
+		xterm -T "☣ INSTALACJA lscpu ☣" -geometry 102x34 -e "sudo apt-get install lscpu -y"
+fi
+
+#sprawdzenie czy lshw jest zainstalowany
+which lshw > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+	echo -e '\e[0;36m' "[ ✔ ] lshw........................[ zainstalowany]"
+	else
+		echo ""
+		echo -e '\e[0;31m' "[ X ] lshw-> nie zainstalowany]"
+		echo -e '\e[0;31m' "[ ! ] Ten skrypt wymaga lshw]"
+		xterm -T "☣ INSTALACJA lshw ☣" -geometry 102x34 -e "sudo apt-get install lshw -y"
+fi
+
+#sprawdzenie czy lshw jest zainstalowany
+which dialog > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+	echo -e '\e[0;36m' "[ ✔ ] dialog........................[ zainstalowany]"
+	else
+		echo ""
+		echo -e '\e[0;31m' "[ X ] dialog-> nie zainstalowany]"
+		echo -e '\e[0;31m' "[ ! ] Ten skrypt wymaga dialog]"
+		xterm -T "☣ INSTALACJA dialog ☣" -geometry 102x34 -e "sudo apt-get install dialog -y"
+fi
+
+while true 
+do
+	echo -e '\n' '\t' '\t' '\e[3m' "0 - WSZYSTKO"
+	sleep 0.03
+ 	echo -e  '\t' '\t' '\e[0;32m' "1 - PAMIEC RAM"
+ 	sleep 0.03                                                                   
+ 	echo -e '\t' '\t' '\e[1;33m' "2 - PROCESOR"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[1;34m' "3 - KARTE GRAFICZNA" 
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[1;35m' "4 - DYSK TWARDY"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[1;36m' "5 - KARTY ROZSZERZEN PCI"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[1;31m' "6 - GNIAZDA USB" 
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[1;30m' "7 - KARTE SIECIOWA"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[0;33m' "8 - BIOS"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[0;36m' "9 - PLYTE GLOWNA"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[0;34m' "10 - INFORMACJE O SYSTEMIE OPERACYJNYM"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[0;35m' "11 - NAPED OPTYCZNY"
+ 	sleep 0.03
+ 	echo -e '\t' '\t' '\e[0;32m' "12 - WYJSCIE"
+ 	sleep 0.03
+ 	echo -n -e '\n' "Co Chcesz Sprawdzic?>"
+ 	read opcja
+
+  #Sprawdzenie czy uzytkownik wpisal liczbe 12 ktora wychodzi ze skryptu
+  if [ "$opcja" -eq 12 ]; then 
+	sudo dialog --infobox "Wychodzenie........." 10 20
+	sleep 3
+	clear
+	exit
+  fi
+
+  #Sprawdzenie czy uzytkownik wpisal liczbe mniejsza niz 12 a jesli to zrobi to wychodzi ze skryptu  
+  if [ "$opcja" -lt 12 ]; then 
+	echo -e '\e[0;32m' "[+] Opcja istnieje.Mozesz przejsc dalej[+]"  
+	sleep 2
+	clear
+  else
+	echo -e '\e[0;31m' "[!] Dostep zabroniony.Opcja nie istnieje Lub wpisano duze lub male litery [!]"
+	sleep 2
+	clear
+	banner
+  fi
+ case $opcja in 
+	0) sudo dmidecode
+	sleep 4
+	banner
+	;;
+	1) sudo  dmidecode --type memory
+	sleep 4	
+	banner
+	;;
+	2) sudo dmidecode -t processor
+	sudo dmidecode -t cache
+	sleep 4
+	banner
+	;;
+	3) sudo lshw -c display
+	sleep 4
+	banner
+	;;
+	4) sudo lshw -c disk
+	sleep 4	
+	banner
+	;;	
+	5) sudo dmidecode -t slot
+	sleep 4
+	banner
+	;;
+	6) sudo lshw | grep usb
+	sleep 4
+	banner
+	;;	
+	7) sudo lshw -c network
+	sleep 4
+	banner
+	;;	
+	8) sudo dmidecode -t bios 
+	sleep 4
+	banner
+	;;
+	9) sudo dmidecode -t baseboard 
+	sleep 4
+	banner
+	;;	
+	10) sudo hostnamectl
+	sleep 4
+	banner
+	;; 
+	11) sudo lshw -c disk | tail -n 14
+	sleep 4
+	banner
+	;;
+	12) exit 
+ esac
+done
